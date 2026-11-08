@@ -1,0 +1,13 @@
+title: "Treach the Word"
+tagline: "Teach the Word. Preach the Word. Treach the Word."
+description: "The blog of Delbert and Jennifer Tritsch."
+url: "https://logos.treachtheword.com"
+baseurl: ""
+
+author:
+  name: "Delbert and Jennifer Tritsch"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap

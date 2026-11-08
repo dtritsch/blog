@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <!-- This magic tag injects all your SEO-tag plugin data for Google -->
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}" type="image/png" sizes="32x32">
+</head>
+<body>
+
+  <header>
+    <a href="/" style="text-decoration:none;">
+        <img src="{{'/assets/images/logo-short.png' | relative_url}}" alt="{{ site.title }} logo" width="200px" style="vertical-align:middle; margin-right:1em;">
+    </a>
+    <nav>
+      <a href="{{ '/' | relative_url }}">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Jekyll automatically injects your page content right here -->
+    {{ content }}
+  </main>
+
+  <footer>
+    {% assign start_year = 2026 %}
+    {% assign current_year = 'now' | date: "%Y" | plus: 0 %}
+    &copy; {% if current_year > start_year %}{{ start_year }}&ndash;{{ current_year }}{% else %}{{ start_year }}{% endif %} {{ site.author.name }} &mdash; {{ site.tagline }}
+  </footer>
+
+</body>
+</html>
