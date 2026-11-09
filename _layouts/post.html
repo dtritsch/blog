@@ -7,7 +7,12 @@ layout: default
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
       {%- assign post_author = site.data.authors[page.author] -%}
-      {%- if post_author %} &middot; {{ post_author.name }}{% endif %}
+      {%- if post_author %} &middot; <a href="{{ '/authors/' | append: page.author | append: '/' | relative_url }}">{{ post_author.name }}</a>{% endif %}
+      {%- if page.last_modified_at -%}
+        {%- assign posted_day = page.date | date: "%Y-%m-%d" -%}
+        {%- assign updated_day = page.last_modified_at | date: "%Y-%m-%d" -%}
+        {%- if updated_day != posted_day %} &middot; Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time>{% endif -%}
+      {%- endif -%}
     </p>
   </header>
 

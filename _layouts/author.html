@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- assign author = site.data.authors[page.author_id] -%}
+<article class="author-page">
+  <header class="author-page__header">
+    {% if author.image %}
+      <img class="author__photo" src="{{ author.image | relative_url }}" alt="{{ author.name }}" width="120" height="120">
+    {% endif %}
+    <h1>{{ author.name }}</h1>
+  </header>
+
+  <div class="author-page__bio">
+    {{ author.bio | markdownify }}
+  </div>
+
+  {% assign author_posts = site.posts | where: "author", page.author_id %}
+  
+  {%- comment -%} Look through the author's posts and count only the visible ones {%- endcomment -%}
+  {% assign visible_count = 0 %}
+  {% for post in author_posts %}
+    {% unless post.published_everywhere == false %}
+      {% assign visible_count = visible_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+
+  {%- comment -%} Only render the section if there is at least one visible post {%- endcomment -%}
+  {% if visible_count > 0 %}
+    <h2 class="author-page__posts-heading">Posts by {{ author.name | split: " " | first }}</h2>
+    <ul class="author-page__posts">
+      {% for post in author_posts %}
+        {% unless post.published_everywhere == false %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</article>

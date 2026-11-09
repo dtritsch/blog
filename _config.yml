@@ -17,9 +17,19 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+collections:
+  authors:
+    output: true
+    permalink: /authors/:name/
+    
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"

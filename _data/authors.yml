@@ -1,6 +1,12 @@
 delbert:
   name: "Delbert Tritsch"
-  bio: "Co-founder and developer."
+  # image: /assets/images/authors/delbert.jpg
+  bio: |
+    Co-founder and developer.
+
+    Additional paragraph(s)...
 jennifer:
   name: "Jennifer Tritsch"
-  bio: "Co-founder and writer."
+  # image: /assets/images/authors/jennifer.jpg
+  bio: |
+    Co-founder and writer.

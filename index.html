@@ -1,18 +1,29 @@
 ---
 layout: default
 ---
-{% if site.posts.size > 0 %}
+{%- comment -%} Count how many posts are actually visible {%- endcomment -%}
+{% assign visible_posts_count = 0 %}
+{% for post in site.posts %}
+  {% unless post.published_everywhere == false %}
+    {% assign visible_posts_count = visible_posts_count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+
+{%- comment -%} Toggle between the post list and the welcome message using the dynamic count {%- endcomment -%}
+{% if visible_posts_count > 0 %}
 <ul class="post-list">
   {% for post in site.posts %}
-  <li>
-    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-    {%- assign post_author = site.data.authors[post.author] %}
-    <p class="post-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-      {%- if post_author %} &middot; {{ post_author.name }}{% endif %}
-    </p>
-    <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
-  </li>
+    {% unless post.published_everywhere == false %}
+    <li>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      {%- assign post_author = site.data.authors[post.author] %}
+      <p class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        {%- if post_author %} &middot; <a href="{{ '/authors/' | append: post.author | append: '/' | relative_url }}">{{ post_author.name }}</a>{% endif %}
+      </p>
+      <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+    </li>
+    {% endunless %}
   {% endfor %}
 </ul>
 {% else %}

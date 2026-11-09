@@ -34,6 +34,16 @@ collections:
       - label: Title
         name: title
         widget: string
+      
+      - label: "Publish Everywhere?"
+        name: "published_everywhere"
+        widget: "boolean"
+        default: false
+      
+      - label: "Hide From RSS"
+        name: "jekyll-feed"
+        widget: "hidden"
+        default: { skip: true }
 
       - label: Author
         name: author
@@ -48,6 +58,15 @@ collections:
         format: "YYYY-MM-DD HH:mm:ss Z"   # includes the UTC offset so Jekyll never treats a new post as future-dated
         picker_utc: false
         hint: "Defaults to now. A date in the future hides the post until then."
+      
+      - label: Updated date
+        name: last_modified_at
+        widget: datetime
+        required: false
+        default: ""
+        format: "YYYY-MM-DD HH:mm:ss Z"
+        picker_utc: false
+        hint: "Optional. Set this when you make a meaningful edit after publishing. Leave blank for new posts."
 
       - label: Summary
         name: description
