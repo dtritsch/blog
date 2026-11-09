@@ -9,33 +9,28 @@
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // Injects a clickable icon/link directly into the main table row views
-    CMS.registerPreviewTemplate("posts", createClass({
+    // Pulls your live style guide sheet into the editor panel
+    CMS.registerPreviewStyle('/assets/main.css');
+
+    // Restores a healthy blog post preview pane mapping
+    var PostPreview = createClass({
       render: function() {
         var entry = this.props.entry;
         var title = entry.getIn(['data', 'title']) || "Untitled";
-        var date = entry.getIn(['data', 'date']);
-        var slug = entry.getIn(['slug']);
+        var body = this.props.widgetFor('body'); 
 
-        if (!date) return h('div', {}, title);
-
-        // Parse date for the URL structure /:year/:month/:slug/
-        var d = new Date(date);
-        var year = d.getFullYear();
-        var month = String(d.getMonth() + 1).padStart(2, '0');
-        var liveUrl = '/' + year + '/' + month + '/' + slug + '/';
-
-        return h('div', { style: { display: 'flex', justifyContent: 'space-between', width: '100%' } },
-          h('span', {}, title),
-          h('a', { 
-            href: liveUrl, 
-            target: '_blank', 
-            style: { color: '#0070f3', textDecoration: 'underline', marginLeft: '10px' },
-            onClick: function(e) { e.stopPropagation(); } // Prevents row click from opening editor instead of link
-          }, "🔗 Live Link")
+        return h('div', { className: 'post-container', style: { padding: '20px' } },
+          h('article', { className: 'post' },
+            h('header', { className: 'post-header' },
+              h('h1', { className: 'post-title' }, title)
+            ),
+            h('div', { className: 'post-content' }, body)
+          )
         );
       }
-    }));
+    });
+
+    CMS.registerPreviewTemplate("posts", PostPreview);
   </script>
 </body>
 </html>
