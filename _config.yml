@@ -9,6 +9,9 @@ permalink: /:year/:month/:slug/
 author:
   name: "Delbert and Jennifer Tritsch"
 
+# Default picture for link previews when a post has no share image (1200 x 630).
+image: /assets/images/social-default.png
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

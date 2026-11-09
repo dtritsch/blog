@@ -1,4 +1,11 @@
-<aside class="store-callout">
-  <p>{{ include.callout.text }}</p>
-  <a class="button" href="{{ include.callout.url }}" target="_blank" rel="noopener">{{ include.callout.label | default: "Visit the store" }}</a>
+<aside class="store-callout{% if include.callout.image %} store-callout--with-image{% endif %}">
+  {% if include.callout.image %}
+  <a class="store-callout__image" href="{{ include.callout.url }}" target="_blank" rel="noopener">
+    <img src="{{ include.callout.image | relative_url }}" alt="{{ include.callout.image_alt }}" loading="lazy">
+  </a>
+  {% endif %}
+  <div class="store-callout__body">
+    <p>{{ include.callout.text }}</p>
+    <a class="button" href="{{ include.callout.url }}" target="_blank" rel="noopener">{{ include.callout.label | default: "Visit the store" }}</a>
+  </div>
 </aside>

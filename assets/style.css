@@ -117,6 +117,9 @@ a:hover { color: var(--green-darker); }
 
 img { max-width: 100%; height: auto; }
 
+/* Keep the hidden attribute working on elements that set their own display */
+[hidden] { display: none !important; }
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -223,8 +226,10 @@ img { max-width: 100%; height: auto; }
   color: #fff;
   background-color: var(--green-dark);
   padding: 0.75em 1.4em;
+  border: 0;
   border-radius: 4px;
   text-decoration: none;
+  cursor: pointer;
 }
 .button:hover {
   color: #fff;
@@ -322,6 +327,31 @@ img { max-width: 100%; height: auto; }
   border-radius: 3px;
 }
 
+/* Share links at the end of a post */
+.share {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.share__heading {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+}
+.share__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.share__status {
+  min-height: 1.5em;
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 /* Optional "from the store" block at the end of a post */
 .store-callout {
   margin-top: 3rem;
@@ -330,6 +360,38 @@ img { max-width: 100%; height: auto; }
   border-radius: 4px;
 }
 .store-callout p { margin: 0 0 1rem; }
+
+/* With a product image: image beside the text on wide screens, stacked on phones */
+.store-callout--with-image {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.store-callout__image {
+  flex: 0 0 40%;
+  max-width: 260px;
+  line-height: 0;
+}
+.store-callout__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.store-callout__body { flex: 1; }
+.store-callout__body p:last-of-type { margin-bottom: 1rem; }
+
+@media (max-width: 560px) {
+  .store-callout--with-image {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .store-callout__image {
+    flex-basis: auto;
+    max-width: 320px;
+    align-self: center;
+  }
+}
 
 @media (max-width: 480px) {
   body { font-size: 1.0625rem; }

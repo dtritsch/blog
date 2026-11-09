@@ -55,6 +55,12 @@ collections:
         required: false
         hint: "Optional. Used on the home page list and as the search/social description. If blank, the first paragraph is used."
 
+      - label: Share image
+        name: image
+        widget: image
+        required: false
+        hint: "Optional. The picture shown when this post is shared on Facebook, X, etc. Best size: 1200 x 630. If blank, the site default is used."
+
       - label: Store callout
         name: store_callout
         widget: object
@@ -66,6 +72,16 @@ collections:
           - { label: Text, name: text, widget: text, required: false }
           - { label: URL, name: url, widget: string, required: false }
           - { label: Button label, name: label, widget: string, required: false, default: "Visit the store" }
+          - label: Product image
+            name: image
+            widget: image
+            required: false
+            hint: "Optional. A product photo, about 600px wide. Shows beside the text (above it on phones)."
+          - label: Image description
+            name: image_alt
+            widget: string
+            required: false
+            hint: "Describe the image for screen readers, e.g. 'Black long sleeve tee with the Your life matters design'. Fill this in whenever you add an image."
 
       - label: Body
         name: body

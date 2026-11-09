@@ -1,0 +1,44 @@
+{%- assign share_url = page.url | absolute_url -%}
+{%- assign share_url_enc = share_url | url_encode -%}
+{%- assign share_title_enc = page.title | url_encode -%}
+<div class="share" data-url="{{ share_url }}" data-title="{{ page.title | escape }}">
+  <h2 class="share__heading">Share this post</h2>
+  <ul class="share__list">
+    <li><a class="button button--outline button--small" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url_enc }}" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a class="button button--outline button--small" href="https://x.com/intent/post?url={{ share_url_enc }}&amp;text={{ share_title_enc }}" target="_blank" rel="noopener">X</a></li>
+    <li><a class="button button--outline button--small" href="mailto:?subject={{ share_title_enc | replace: '+', '%20' }}&amp;body={{ share_url_enc }}">Email</a></li>
+    <li><button type="button" class="button button--outline button--small share__copy" hidden>Copy link</button></li>
+    <li><button type="button" class="button button--outline button--small share__native" hidden>More&hellip;</button></li>
+  </ul>
+  <p class="share__status" role="status" aria-live="polite"></p>
+</div>
+<script>
+  (function () {
+    var box = document.querySelector('.share');
+    if (!box) return;
+    var url = box.getAttribute('data-url');
+    var title = box.getAttribute('data-title');
+    var copy = box.querySelector('.share__copy');
+    var more = box.querySelector('.share__native');
+    var status = box.querySelector('.share__status');
+
+    // Native share sheet (phones and some desktops): shows the person's own apps
+    if (navigator.share) {
+      more.hidden = false;
+      more.addEventListener('click', function () {
+        navigator.share({ title: title, url: url }).catch(function () {});
+      });
+    }
+
+    // Copy link
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      copy.hidden = false;
+      copy.addEventListener('click', function () {
+        navigator.clipboard.writeText(url).then(function () {
+          status.textContent = 'Link copied';
+          setTimeout(function () { status.textContent = ''; }, 3000);
+        });
+      });
+    }
+  })();
+</script>
