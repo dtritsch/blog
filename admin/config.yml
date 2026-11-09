@@ -1,3 +1,6 @@
+site_url: https://blog.treachtheword.com
+display_url: https://blog.treachtheword.com
+
 backend:
   name: github
   repo: dtritsch/blog
@@ -8,8 +11,6 @@ backend:
 
 publish_mode: editorial_workflow    # drafts become pull requests: Draft > In Review > Ready > Publish
 
-site_url: https://blog.treachtheword.com
-display_url: https://blog.treachtheword.com
 locale: en
 
 logo:
@@ -28,7 +29,7 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "{{year}}/{{month}}/{{slug}}/"
+    preview_path: "{{year}}/{{month}}/{{title}}/"
     editor:
       preview: true
     fields:
