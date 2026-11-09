@@ -6,5 +6,6 @@ store_callout:
   label: Visit the store
   url: https://treachtheword.com/products/your-life-matters-long-sleeve-tee
   text: '"Your Life Matters" Long Sleeve Tee'
+  image: /assets/images/posts/ylm_longsleeve_mockup_white.jpg
 ---
 This is a **test** blog post.
