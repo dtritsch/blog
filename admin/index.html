@@ -8,29 +8,5 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // Pulls your live style guide sheet into the editor panel
-    CMS.registerPreviewStyle('/assets/main.css');
-
-    // Restores a healthy blog post preview pane mapping
-    var PostPreview = createClass({
-      render: function() {
-        var entry = this.props.entry;
-        var title = entry.getIn(['data', 'title']) || "Untitled";
-        var body = this.props.widgetFor('body'); 
-
-        return h('div', { className: 'post-container', style: { padding: '20px' } },
-          h('article', { className: 'post' },
-            h('header', { className: 'post-header' },
-              h('h1', { className: 'post-title' }, title)
-            ),
-            h('div', { className: 'post-content' }, body)
-          )
-        );
-      }
-    });
-
-    CMS.registerPreviewTemplate("posts", PostPreview);
-  </script>
 </body>
 </html>
