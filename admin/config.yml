@@ -28,8 +28,9 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "{{year}}/{{month}}/{{slug}}/"
     editor:
-      preview: true                # Decap's preview can't use the site's CSS; remove this line to show it anyway
+      preview: true
     fields:
       - label: Title
         name: title
