@@ -16,3 +16,6 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+
+# Folder for local files that are ignored by Jekyll and Git.
+_local_only/

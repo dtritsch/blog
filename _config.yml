@@ -1,8 +1,10 @@
 title: "Treach the Word"
 tagline: "Teach the Word. Preach the Word. Treach the Word."
 description: "The blog of Delbert and Jennifer Tritsch."
-url: "https://logos.treachtheword.com"
+url: "https://blog.treachtheword.com"
 baseurl: ""
+timezone: America/Chicago
+permalink: /:year/:month/:slug/
 
 author:
   name: "Delbert and Jennifer Tritsch"
@@ -11,3 +13,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

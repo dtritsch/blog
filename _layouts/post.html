@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      {%- assign post_author = site.data.authors[page.author] -%}
+      {%- if post_author %} &middot; {{ post_author.name }}{% endif %}
+    </p>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.store_callout.url %}
+    {% include store-callout.html callout=page.store_callout %}
+  {% endif %}
+</article>

@@ -1,0 +1,72 @@
+backend:
+  name: github
+  repo: dtritsch/blog
+  branch: main
+  site_domain: blog.treachtheword.com
+  base_url: https://decap-oauth.delbert-tritsch.workers.dev
+  squash_merges: true
+
+publish_mode: editorial_workflow    # drafts become pull requests: Draft > In Review > Ready > Publish
+
+site_url: https://blog.treachtheword.com
+display_url: https://blog.treachtheword.com
+locale: en
+
+logo:
+  src: https://blog.treachtheword.com/assets/images/logo-short.png
+  show_in_header: true
+
+media_folder: "assets/images/posts"
+public_folder: "/assets/images/posts"
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: _posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true                # Decap's preview can't use the site's CSS; remove this line to show it anyway
+    fields:
+      - label: Title
+        name: title
+        widget: string
+
+      - label: Author
+        name: author
+        widget: select
+        options:
+          - { label: Delbert Tritsch, value: delbert }
+          - { label: Jennifer Tritsch, value: jennifer }
+
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD HH:mm:ss Z"   # includes the UTC offset so Jekyll never treats a new post as future-dated
+        picker_utc: false
+        hint: "Defaults to now. A date in the future hides the post until then."
+
+      - label: Summary
+        name: description
+        widget: text
+        required: false
+        hint: "Optional. Used on the home page list and as the search/social description. If blank, the first paragraph is used."
+
+      - label: Store callout
+        name: store_callout
+        widget: object
+        required: false
+        collapsed: true
+        summary: "{{fields.url}}"
+        hint: "Optional box with a button at the end of the post. Leave the URL empty for no callout."
+        fields:
+          - { label: Text, name: text, widget: text, required: false }
+          - { label: URL, name: url, widget: string, required: false }
+          - { label: Button label, name: label, widget: string, required: false, default: "Visit the store" }
+
+      - label: Body
+        name: body
+        widget: markdown

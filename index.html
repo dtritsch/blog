@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{% if site.posts.size > 0 %}
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    {%- assign post_author = site.data.authors[post.author] %}
+    <p class="post-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+      {%- if post_author %} &middot; {{ post_author.name }}{% endif %}
+    </p>
+    <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<h1>Welcome</h1>
+<p>Our first posts are coming soon. In the meantime, you can browse our original designs in the <a href="https://treachtheword.com" target="_blank" rel="noopener">store</a>.</p>
+{% endif %}

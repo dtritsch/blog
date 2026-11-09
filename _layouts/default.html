@@ -3,33 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <!-- This magic tag injects all your SEO-tag plugin data for Google -->
+  <meta name="theme-color" content="#f5f5f3">
+  <script>document.documentElement.classList.add('js');</script>
   {% seo %}
+  {% feed_meta %}
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <link rel="icon" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}" type="image/png" sizes="32x32">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header>
-    <a href="/" class="site-logo">
-        <img src="{{'/assets/images/logo-short.png' | relative_url}}" alt="{{ site.title }} logo">
-    </a>
-    <nav>
-      <a href="{{ '/' | relative_url }}">Home</a>
-    </nav>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="{{ '/' | relative_url }}" class="site-logo">
+        <img src="{{ '/assets/images/logo-short.png' | relative_url }}" alt="{{ site.title }}">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a class="button button--small" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a class="button button--small" href="https://treachtheword.com" target="_blank" rel="noopener">Store</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- Jekyll automatically injects your page content right here -->
+  <main id="main-content" class="container">
     {{ content }}
   </main>
 
-  <footer>
+  <footer class="site-footer container">
     {% assign start_year = 2026 %}
     {% assign current_year = 'now' | date: "%Y" | plus: 0 %}
     &copy; {% if current_year > start_year %}{{ start_year }}&ndash;{{ current_year }}{% else %}{{ start_year }}{% endif %} {{ site.author.name }} &mdash; {{ site.tagline }}
   </footer>
 
+  <script>
+    (function () {
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('.nav-toggle');
+      if (!header || !toggle) return;
+      function setOpen(open) {
+        header.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+      toggle.addEventListener('click', function () {
+        setOpen(!header.classList.contains('is-open'));
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && header.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
