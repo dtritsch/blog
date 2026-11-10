@@ -285,7 +285,7 @@ button.icon-link {
 .icon--github { -webkit-mask-image: url('./icons/github.svg'); mask-image: url('./icons/github.svg'); }
 .icon--email { -webkit-mask-image: url('./icons/email.svg'); mask-image: url('./icons/email.svg'); }
 .icon--copy  { -webkit-mask-image: url('./icons/copy.svg');  mask-image: url('./icons/copy.svg'); }
-.icon--share { -webkit-mask-image: url('./icons/share.svg'); mask-image: url('./icons/share.svg'); }
+.icon--share { -webkit-mask-image: url('./icons/more.svg'); mask-image: url('./icons/more.svg'); }
 
 /* Current page: tinted fill with a green outline instead of the solid fill */
 .button[aria-current="page"],
