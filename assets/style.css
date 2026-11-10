@@ -259,6 +259,13 @@ img { max-width: 100%; height: auto; }
   border-radius: 4px;
 }
 .icon-link:hover { color: var(--green-darker); }
+button.icon-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
 .icon {
   display: block;
   width: 2.5rem;
@@ -276,6 +283,9 @@ img { max-width: 100%; height: auto; }
 .icon--instagram { -webkit-mask-image: url('./icons/instagram.svg'); mask-image: url('./icons/instagram.svg'); }
 .icon--youtube { -webkit-mask-image: url('./icons/youtube.svg'); mask-image: url('./icons/youtube.svg'); }
 .icon--github { -webkit-mask-image: url('./icons/github.svg'); mask-image: url('./icons/github.svg'); }
+.icon--email { -webkit-mask-image: url('./icons/email.svg'); mask-image: url('./icons/email.svg'); }
+.icon--copy  { -webkit-mask-image: url('./icons/copy.svg');  mask-image: url('./icons/copy.svg'); }
+.icon--share { -webkit-mask-image: url('./icons/share.svg'); mask-image: url('./icons/share.svg'); }
 
 /* Current page: tinted fill with a green outline instead of the solid fill */
 .button[aria-current="page"],
