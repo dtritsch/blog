@@ -249,6 +249,34 @@ img { max-width: 100%; height: auto; }
   background-color: var(--green-dark);
 }
 
+/* Icon links: the icon itself is the button (share links, author social links).
+   The icon is the SVG file used as a mask, so it takes the link color. */
+.icon-link {
+  display: inline-flex;
+  padding: 0.125rem;          /* with the 2.5rem icon, a 44px tap target */
+  color: var(--green-dark);
+  line-height: 0;
+  border-radius: 4px;
+}
+.icon-link:hover { color: var(--green-darker); }
+.icon {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.icon--facebook { -webkit-mask-image: url('./icons/facebook.svg'); mask-image: url('./icons/facebook.svg'); }
+.icon--x { -webkit-mask-image: url('./icons/x.svg'); mask-image: url('./icons/x.svg'); }
+.icon--instagram { -webkit-mask-image: url('./icons/instagram.svg'); mask-image: url('./icons/instagram.svg'); }
+.icon--youtube { -webkit-mask-image: url('./icons/youtube.svg'); mask-image: url('./icons/youtube.svg'); }
+.icon--github { -webkit-mask-image: url('./icons/github.svg'); mask-image: url('./icons/github.svg'); }
+
 /* Current page: tinted fill with a green outline instead of the solid fill */
 .button[aria-current="page"],
 .button[aria-current="page"]:hover {
@@ -345,6 +373,8 @@ img { max-width: 100%; height: auto; }
   margin: 0;
   padding: 0;
 }
+.share__list { align-items: center; }
+.share__list li { display: flex; }
 .share__status {
   min-height: 1.5em;
   margin: 0.5rem 0 0;
@@ -413,6 +443,17 @@ img { max-width: 100%; height: auto; }
 }
 
 .author-page__bio > :first-child { margin-top: 0; }
+
+/* Optional social icons under the bio */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+}
+.social-links li { display: flex; }
 
 .author-page__posts-heading {
   font-size: 1.35rem;

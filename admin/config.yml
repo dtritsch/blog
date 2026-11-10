@@ -41,6 +41,7 @@ collections:
         name: "published_everywhere"
         widget: "boolean"
         default: false
+        hint: "Leave UNCHECKED to simulate a live preview. The post will be built at its direct hidden URL for verification. CHECK this field and republish to make it visible on the homepage and RSS feed."
       
       - label: "Hide From RSS"
         name: "jekyll-feed"

@@ -14,6 +14,26 @@ layout: default
     {{ author.bio | markdownify }}
   </div>
 
+  {%- if author.facebook or author.x or author.instagram or author.youtube or author.github %}
+  <ul class="social-links" aria-label="{{ author.name }} on social media">
+    {%- if author.facebook %}
+    <li><a class="icon-link" href="{{ author.facebook }}" target="_blank" rel="me noopener" aria-label="{{ author.name }} on Facebook" title="Facebook"><span class="icon icon--facebook" aria-hidden="true"></span></a></li>
+    {%- endif %}
+    {%- if author.x %}
+    <li><a class="icon-link" href="{{ author.x }}" target="_blank" rel="me noopener" aria-label="{{ author.name }} on X" title="X"><span class="icon icon--x" aria-hidden="true"></span></a></li>
+    {%- endif %}
+    {%- if author.instagram %}
+    <li><a class="icon-link" href="{{ author.instagram }}" target="_blank" rel="me noopener" aria-label="{{ author.name }} on Instagram" title="Instagram"><span class="icon icon--instagram" aria-hidden="true"></span></a></li>
+    {%- endif %}
+    {%- if author.youtube %}
+    <li><a class="icon-link" href="{{ author.youtube }}" target="_blank" rel="me noopener" aria-label="{{ author.name }} on YouTube" title="YouTube"><span class="icon icon--youtube" aria-hidden="true"></span></a></li>
+    {%- endif %}
+    {%- if author.github %}
+    <li><a class="icon-link" href="{{ author.github }}" target="_blank" rel="me noopener" aria-label="{{ author.name }} on GitHub" title="GitHub"><span class="icon icon--github" aria-hidden="true"></span></a></li>
+    {%- endif %}
+  </ul>
+  {%- endif %}
+
   {% assign author_posts = site.posts | where: "author", page.author_id %}
   
   {%- comment -%} Look through the author's posts and count only the visible ones {%- endcomment -%}

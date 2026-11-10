@@ -1,12 +1,26 @@
 delbert:
   name: "Delbert Tritsch"
-  # image: /assets/images/authors/delbert.jpg
+  image: /assets/images/authors/delbert.jpg
+  # Optional social links: full URLs. Remove the leading # to show an icon; leave a line out to hide it.
+  facebook: https://www.facebook.com/delbert.tritsch
+  x: https://x.com/DelbertTritsch
+  # instagram: https://www.instagram.com/USERNAME
+  # youtube: https://www.youtube.com/@USERNAME
+  # github: https://github.com/USERNAME
   bio: |
-    Co-founder and developer.
+    Christian. Husband. Father.
 
-    Additional paragraph(s)...
+    Delbert Tritsch is the co-founder of Treach the Word with his wife, [Jennifer](/authors/jennifer/).
 jennifer:
   name: "Jennifer Tritsch"
-  # image: /assets/images/authors/jennifer.jpg
+  image: /assets/images/authors/jennifer.jpg
+  # Optional social links: full URLs. Remove the leading # to show an icon; leave a line out to hide it.
+  facebook: https://www.facebook.com/jennifer.tritsch
+  x: https://x.com/JenniferTritsch
+  instagram: https://www.instagram.com/realnurse26
+  # youtube: https://www.youtube.com/@USERNAME
+  # github: https://github.com/USERNAME
   bio: |
-    Co-founder and writer.
+    Christian. Wife. Mother.
+
+    Jennifer Tritsch is the co-founder of Treach the Word with her husband, [Delbert](/authors/delbert/).

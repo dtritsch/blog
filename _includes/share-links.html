@@ -4,8 +4,8 @@
 <div class="share" data-url="{{ share_url }}" data-title="{{ page.title | escape }}">
   <h2 class="share__heading">Share this post</h2>
   <ul class="share__list">
-    <li><a class="button button--outline button--small" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url_enc }}" target="_blank" rel="noopener">Facebook</a></li>
-    <li><a class="button button--outline button--small" href="https://x.com/intent/post?url={{ share_url_enc }}&amp;text={{ share_title_enc }}" target="_blank" rel="noopener">X</a></li>
+    <li><a class="icon-link" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url_enc }}" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook"><span class="icon icon--facebook" aria-hidden="true"></span></a></li>
+    <li><a class="icon-link" href="https://x.com/intent/post?url={{ share_url_enc }}&amp;text={{ share_title_enc }}" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X"><span class="icon icon--x" aria-hidden="true"></span></a></li>
     <li><a class="button button--outline button--small" href="mailto:?subject={{ share_title_enc | replace: '+', '%20' }}&amp;body={{ share_url_enc }}">Email</a></li>
     <li><button type="button" class="button button--outline button--small share__copy" hidden>Copy link</button></li>
     <li><button type="button" class="button button--outline button--small share__native" hidden>More&hellip;</button></li>
