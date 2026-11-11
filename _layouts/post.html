@@ -2,15 +2,15 @@
 layout: default
 ---
 <article class="post">
-  {% if page.image != blank %}
+  {% if page.image and page.image != "" %}
   {% assign hero_credit = page.image_credit %}
-  {% if hero_credit == blank %}
+  {% unless hero_credit and hero_credit != "" %}
     {% assign saved_credit = site.data.image_credits.credits | where: "image", page.image | first %}
     {% assign hero_credit = saved_credit.credit %}
-  {% endif %}
+  {% endunless %}
   <figure class="post-hero">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}">
-    {% if hero_credit != blank %}
+    {% if hero_credit and hero_credit != "" %}
     <figcaption>{{ hero_credit }}</figcaption>
     {% endif %}
   </figure>
@@ -21,7 +21,7 @@ layout: default
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
       {%- assign post_author = site.data.authors[page.author] -%}
       {%- if post_author %} &middot; <a href="{{ '/authors/' | append: page.author | append: '/' | relative_url }}">{{ post_author.name }}</a>{% endif %}
-      {%- if page.last_modified_at != blank -%}
+      {%- if page.last_modified_at and page.last_modified_at != "" -%}
         {%- assign posted_day = page.date | date: "%Y-%m-%d" -%}
         {%- assign updated_day = page.last_modified_at | date: "%Y-%m-%d" -%}
         {%- if updated_day != posted_day %} &middot; Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time>{% endif -%}
@@ -35,7 +35,7 @@ layout: default
 
   {% include share-links.html %}
 
-  {% if page.store_callout.url != blank %}
+  {% if page.store_callout.url and page.store_callout.url != "" %}
     {% include store-callout.html callout=page.store_callout %}
   {% endif %}
 </article>
