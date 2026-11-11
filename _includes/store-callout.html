@@ -1,5 +1,5 @@
-<aside class="store-callout{% if include.callout.image %} store-callout--with-image{% endif %}">
-  {% if include.callout.image %}
+<aside class="store-callout{% if include.callout.image != blank %} store-callout--with-image{% endif %}">
+  {% if include.callout.image != blank %}
   <a class="store-callout__image" href="{{ include.callout.url }}" target="_blank" rel="noopener">
     <img src="{{ include.callout.image | relative_url }}" alt="{{ include.callout.image_alt }}" loading="lazy">
   </a>

@@ -81,7 +81,19 @@ collections:
         name: image
         widget: image
         required: false
-        hint: "Optional. The picture shown when this post is shared on Facebook, X, etc. Best size: 1200 x 630. If blank, the site default is used."
+        hint: "Optional. Shown at the top of the post and in previews when it's shared. Best size: 1200 x 630. If blank, the post has no top image and the site default is used for previews."
+
+      - label: Image description
+        name: image_alt
+        widget: string
+        required: false
+        hint: "Describe the image for screen readers. Leave blank if it is purely decorative."
+
+      - label: Image credit
+        name: image_credit
+        widget: string
+        required: false
+        hint: "Optional. Leave blank to use the credit saved for this image under Image credits. HTML is allowed."
 
       - label: Store callout
         name: store_callout
@@ -108,3 +120,21 @@ collections:
       - label: Body
         name: body
         widget: markdown
+        
+  - name: image_credits
+    label: Image credits
+    files:
+      - name: credits
+        label: Image credits
+        file: _data/image_credits.yml
+        fields:
+          - label: Credits
+            name: credits
+            widget: list
+            label_singular: Credit
+            fields:
+              - { label: Image, name: image, widget: image }
+              - label: Credit
+                name: credit
+                widget: string
+                hint: 'HTML allowed, e.g. Photo by <a href="https://unsplash.com/@name">Name</a> on <a href="https://unsplash.com">Unsplash</a>'
